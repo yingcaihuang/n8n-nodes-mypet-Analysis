@@ -1,0 +1,145 @@
+{
+  "name": "MyPet Analytics - Basic Analysis Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "resource": "tradingAnalysis",
+        "operation": "profitLossAnalysis",
+        "dataSource": "input",
+        "timePeriod": "30d",
+        "includeVisualization": true,
+        "generateReport": true
+      },
+      "id": "analytics-node",
+      "name": "MyPet Analytics",
+      "type": "n8n-nodes-mypet-analytics.myPetAnalytics",
+      "typeVersion": 1,
+      "position": [740, 240]
+    },
+    {
+      "parameters": {
+        "resource": "orders",
+        "operation": "queryTradeOrders",
+        "accountId": "={{ $json.accountId }}",
+        "startTime": "2025-01-01",
+        "endTime": "2025-01-31"
+      },
+      "id": "mypet-stocks-node",
+      "name": "MyPet Stocks",
+      "type": "n8n-nodes-mypet-stocks.myPetStocks",
+      "typeVersion": 1,
+      "position": [520, 240]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "risk-check",
+              "leftValue": "={{ $json.analysis.summary.profitFactor }}",
+              "rightValue": 1,
+              "operator": {
+                "type": "number",
+                "operation": "lt"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "risk-check-if",
+      "name": "Risk Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [960, 240]
+    },
+    {
+      "parameters": {
+        "subject": "Risk Alert: Low Profit Factor Detected",
+        "message": "=Trading analysis shows profit factor of {{ $json.analysis.summary.profitFactor }}, which is below 1.0.\n\nKey Metrics:\n- Total Trades: {{ $json.analysis.summary.totalTrades }}\n- Win Rate: {{ $json.analysis.summary.winRate }}%\n- Total Profit: {{ $json.analysis.summary.totalProfit }}\n\nPlease review your trading strategy.",
+        "options": {}
+      },
+      "id": "send-alert-email",
+      "name": "Send Alert Email",
+      "type": "n8n-nodes-base.emailSend",
+      "typeVersion": 2,
+      "position": [1180, 140]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=trading-analysis-{{ $now.format('YYYY-MM-DD') }}.json",
+        "fileContent": "={{ JSON.stringify($json, null, 2) }}",
+        "options": {}
+      },
+      "id": "save-report",
+      "name": "Save Report",
+      "type": "n8n-nodes-base.writeFile",
+      "typeVersion": 1,
+      "position": [1180, 340]
+    }
+  ],
+  "connections": {
+    "MyPet Stocks": {
+      "main": [
+        [
+          {
+            "node": "MyPet Analytics",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "MyPet Analytics": {
+      "main": [
+        [
+          {
+            "node": "Risk Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Risk Check": {
+      "main": [
+        [
+          {
+            "node": "Send Alert Email",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Save Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-22T10:00:00.000Z",
+      "updatedAt": "2025-01-22T10:00:00.000Z",
+      "id": "analytics",
+      "name": "analytics"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-22T10:00:00.000Z",
+  "versionId": "1"
+}

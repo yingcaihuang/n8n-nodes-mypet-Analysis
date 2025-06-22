@@ -1,0 +1,216 @@
+{
+  "name": "MyPet Analytics - Risk Monitoring Workflow",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "hours",
+              "hoursInterval": 4
+            }
+          ]
+        }
+      },
+      "id": "schedule-trigger",
+      "name": "Schedule Trigger",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.2,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "resource": "accounts",
+        "operation": "listAccounts"
+      },
+      "id": "get-accounts",
+      "name": "Get Accounts",
+      "type": "n8n-nodes-mypet-stocks.myPetStocks",
+      "typeVersion": 1,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "resource": "orders",
+        "operation": "queryTradeOrders",
+        "accountId": "={{ $json.accountId }}",
+        "startTime": "={{ $now.minus({ days: 7 }).format('YYYY-MM-DD') }}",
+        "endTime": "={{ $now.format('YYYY-MM-DD') }}"
+      },
+      "id": "get-recent-trades",
+      "name": "Get Recent Trades",
+      "type": "n8n-nodes-mypet-stocks.myPetStocks",
+      "typeVersion": 1,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "resource": "riskAssessment",
+        "operation": "valueAtRisk",
+        "dataSource": "input",
+        "timePeriod": "7d",
+        "confidenceLevel": 95,
+        "includeVisualization": true,
+        "generateReport": true
+      },
+      "id": "var-analysis",
+      "name": "VaR Analysis",
+      "type": "n8n-nodes-mypet-analytics.myPetAnalytics",
+      "typeVersion": 1,
+      "position": [900, 300]
+    },
+    {
+      "parameters": {
+        "resource": "riskAssessment",
+        "operation": "riskAlerts",
+        "dataSource": "input",
+        "timePeriod": "7d"
+      },
+      "id": "risk-alerts",
+      "name": "Risk Alerts",
+      "type": "n8n-nodes-mypet-analytics.myPetAnalytics",
+      "typeVersion": 1,
+      "position": [900, 480]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "options": {
+            "caseSensitive": true,
+            "leftValue": "",
+            "typeValidation": "strict"
+          },
+          "conditions": [
+            {
+              "id": "high-risk-check",
+              "leftValue": "={{ $json.analysis.summary.highSeverity }}",
+              "rightValue": 0,
+              "operator": {
+                "type": "number",
+                "operation": "gt"
+              }
+            }
+          ],
+          "combinator": "and"
+        }
+      },
+      "id": "high-risk-check",
+      "name": "High Risk Check",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [1120, 480]
+    },
+    {
+      "parameters": {
+        "url": "https://hooks.slack.com/services/YOUR/SLACK/WEBHOOK",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={\n  \"text\": \"🚨 High Risk Alert\",\n  \"blocks\": [\n    {\n      \"type\": \"section\",\n      \"text\": {\n        \"type\": \"mrkdwn\",\n        \"text\": \"*High Risk Alert Detected*\\n\\n{{ $json.analysis.summary.highSeverity }} high-severity risk alerts found.\"\n      }\n    },\n    {\n      \"type\": \"section\",\n      \"fields\": [\n        {\n          \"type\": \"mrkdwn\",\n          \"text\": \"*Total Alerts:*\\n{{ $json.analysis.summary.totalAlerts }}\"\n        },\n        {\n          \"type\": \"mrkdwn\",\n          \"text\": \"*High Severity:*\\n{{ $json.analysis.summary.highSeverity }}\"\n        }\n      ]\n    }\n  ]\n}",
+        "options": {}
+      },
+      "id": "slack-alert",
+      "name": "Slack Alert",
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.2,
+      "position": [1340, 380]
+    },
+    {
+      "parameters": {
+        "operation": "write",
+        "fileName": "=risk-report-{{ $now.format('YYYY-MM-DD-HH') }}.json",
+        "fileContent": "={{ JSON.stringify({ var: $('VaR Analysis').first().json, alerts: $('Risk Alerts').first().json }, null, 2) }}",
+        "options": {}
+      },
+      "id": "save-risk-report",
+      "name": "Save Risk Report",
+      "type": "n8n-nodes-base.writeFile",
+      "typeVersion": 1,
+      "position": [1340, 580]
+    }
+  ],
+  "connections": {
+    "Schedule Trigger": {
+      "main": [
+        [
+          {
+            "node": "Get Accounts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Accounts": {
+      "main": [
+        [
+          {
+            "node": "Get Recent Trades",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Get Recent Trades": {
+      "main": [
+        [
+          {
+            "node": "VaR Analysis",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Risk Alerts",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Risk Alerts": {
+      "main": [
+        [
+          {
+            "node": "High Risk Check",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "High Risk Check": {
+      "main": [
+        [
+          {
+            "node": "Slack Alert",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Save Risk Report",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [
+    {
+      "createdAt": "2025-01-22T10:00:00.000Z",
+      "updatedAt": "2025-01-22T10:00:00.000Z",
+      "id": "risk-monitoring",
+      "name": "risk-monitoring"
+    }
+  ],
+  "triggerCount": 0,
+  "updatedAt": "2025-01-22T10:00:00.000Z",
+  "versionId": "1"
+}
