@@ -1,279 +1,216 @@
-# MyPet Analytics - Advanced n8n Node for Trading Data Analysis
+# MyPet Analytics - 专业交易数据分析节点
 
 ![MyPet Analytics](https://img.shields.io/badge/n8n-community--node-blue)
-![Version](https://img.shields.io/badge/version-1.0.0-green)
+![Version](https://img.shields.io/badge/version-1.0.13-green)
 ![License](https://img.shields.io/badge/license-MIT-blue)
 
-## 🚀 Overview
+## 🎯 简介 | Overview
 
-MyPet Analytics is a powerful n8n community node that provides advanced analytics and AI-powered insights for MyPet Stocks trading data. This node extends the capabilities of the original [MyPet Stocks node](https://github.com/yingcaihuang/n8n-nodes-mypet-stocks) by adding sophisticated analysis features including risk assessment, performance metrics, market analysis, and predictive modeling.
+**中文**: MyPet Analytics 是专为 MyPet Stocks 交易数据设计的高级分析节点，提供专业的交易绩效分析、风险评估和可视化报告功能。
 
-## ✨ Features
+**English**: MyPet Analytics is an advanced analysis node specifically designed for MyPet Stocks trading data, providing professional trading performance analysis, risk assessment, and visualization reporting capabilities.
 
-### 📊 Trading Analysis
-- **Profit & Loss Analysis**: Comprehensive P&L breakdown with win rates, profit factors, and risk metrics
-- **Pattern Recognition**: Identify trading patterns and behavioral insights
-- **Position Analysis**: Analyze position sizing, holding periods, and exposure
-- **Trade Efficiency**: Evaluate execution efficiency and timing
+## ✨ 核心功能 | Key Features
 
-### ⚠️ Risk Assessment
-- **Value at Risk (VaR)**: Calculate historical and parametric VaR with multiple confidence levels
-- **Risk Metrics**: Sharpe ratio, Sortino ratio, Calmar ratio, and more
-- **Stress Testing**: Portfolio stress testing with scenario analysis
-- **Risk Alerts**: Real-time risk monitoring and alerting
+### 📊 四种分析模式 | Four Analysis Modes
 
-### 📈 Performance Metrics
-- **Return Analysis**: Statistical analysis of returns with distribution insights
-- **Sharpe Ratio**: Risk-adjusted return calculations with rolling analysis
-- **Maximum Drawdown**: Drawdown analysis with recovery metrics
-- **Benchmarking**: Performance comparison against benchmarks
+#### 1. 基础统计 | Basic Statistics
+- **中文**: 交易概览、盈亏汇总、品种分布、数据验证
+- **English**: Trading overview, P&L summary, symbol distribution, data validation
 
-### 🌍 Market Analysis
-- **Correlation Analysis**: Inter-symbol correlation analysis with heatmaps
-- **Volatility Analysis**: Historical and rolling volatility with clustering detection
-- **Trend Analysis**: Trend identification using linear regression
-- **Regime Detection**: Market regime identification and analysis
+#### 2. 盈利分析 | Profit Analysis
+- **中文**: 胜率计算、盈亏比、盈利因子、盈利分布分析
+- **English**: Win rate calculation, profit/loss ratio, profit factor, profit distribution
 
-### 🤖 Predictive Models
-- **Price Prediction**: Simple linear regression-based price forecasting
-- **Risk Prediction**: Future risk level forecasting
-- **Signal Generation**: Multi-factor trading signal generation
-- **Anomaly Detection**: Identify unusual trading patterns
+#### 3. 风险评估 | Risk Assessment
+- **中文**: 波动率、最大回撤、VaR、夏普比率、风险等级
+- **English**: Volatility, maximum drawdown, VaR, Sharpe ratio, risk level
 
-### 💼 Portfolio Optimization
-- **Portfolio Allocation**: Equal-weight, risk-parity, and mean-variance optimization
-- **Risk Budgeting**: Optimal risk budget allocation across symbols
-- **Rebalancing Strategy**: Automated rebalancing recommendations
+#### 4. 绩效分析 | Performance Summary
+- **中文**: 综合评分 (0-100)、等级评定 (A+ 到 F)、改进建议
+- **English**: Composite score (0-100), grade rating (A+ to F), improvement suggestions
 
-## 🛠️ Installation
+### 📈 可视化功能 | Visualization Features
 
-### Prerequisites
-- n8n version 0.190.0 or higher
-- Node.js 16.x or higher
+#### 图表生成 | Chart Generation
+- **中文**: 饼图、柱状图数据生成，支持多种图表库
+- **English**: Pie chart and bar chart data generation, supports multiple chart libraries
 
-### Install via npm
-```bash
-npm install n8n-nodes-mypet-analytics
+#### HTML 报告 | HTML Reports
+- **中文**: 专业 HTML 报告，内嵌图表，邮件友好格式
+- **English**: Professional HTML reports with embedded charts, email-friendly format
+
+## 🚀 安装使用 | Installation & Usage
+
+### 安装 | Installation
+在 n8n 中，进入 **设置** > **社区节点** 并安装：
+In n8n, go to **Settings** > **Community Nodes** and install:
+
+```
+n8n-nodes-mypet-analytics
 ```
 
-### Install via n8n Community Nodes
-1. Go to **Settings** > **Community Nodes**
-2. Click **Install a community node**
-3. Enter: `n8n-nodes-mypet-analytics`
-4. Click **Install**
+### 基本用法 | Basic Usage
+1. **连接数据源 | Connect Data Source**: MyPet Stocks API → MyPet Analytics
+2. **选择分析类型 | Select Analysis Type**: 基础/盈利/风险/绩效 | Basic/Profit/Risk/Performance
+3. **配置选项 | Configure Options**: 图表和报告设置 | Chart and report settings
+4. **执行分析 | Execute Analysis**: 获取专业分析结果 | Get professional analysis results
 
-## 🔧 Configuration
-
-### Credentials (Optional)
-The MyPet Analytics node can work with input data only, but you can optionally configure API credentials for enhanced features:
-
-1. Create new credentials of type "MyPet Analytics API"
-2. Configure the following (all optional):
-   - **Enable API Features**: Toggle for additional API-based analytics
-   - **API Key**: Your analytics API key
-   - **API Base URL**: Analytics service endpoint
-   - **Analytics Settings**: Various performance and precision settings
-
-## 📋 Usage
-
-### Basic Workflow
-1. **Connect Data Source**: Connect the output from a MyPet Stocks node or any compatible trading data
-2. **Select Analysis Type**: Choose from Trading Analysis, Risk Assessment, Performance Metrics, etc.
-3. **Configure Parameters**: Set time periods, confidence levels, and other analysis parameters
-4. **Enable Visualizations**: Optionally generate charts and visual reports
-5. **Execute**: Run the analysis and review results
-
-### Example Workflow
+### 工作流示例 | Example Workflow
 ```
-MyPet Stocks Node → MyPet Analytics Node → Output/Visualization
+MyPet Stocks API → MyPet Analytics → Email/Database/Webhook
 ```
 
-### Input Data Format
-The node accepts data from MyPet Stocks nodes including:
-- Trade orders and execution data
-- Account information and balances
-- Commission and fee data
-- Historical trading statistics
-
-## 📊 Output Format
-
-### Analysis Results
+### 输入数据格式 | Input Data Format
 ```json
 {
-  "resource": "tradingAnalysis",
-  "operation": "profitLossAnalysis",
-  "analysis": {
-    "summary": {
-      "totalTrades": 150,
-      "winRate": 65.5,
-      "profitFactor": 1.85,
-      "totalProfit": 12500.50
-    },
-    "symbolBreakdown": { ... },
-    "riskMetrics": { ... }
-  },
-  "visualizations": {
-    "charts": [ ... ],
-    "summary": { ... }
-  },
-  "report": {
-    "executiveSummary": { ... },
-    "detailedAnalysis": { ... }
+  "orders": [
+    {
+      "id": 1120119,
+      "ticket": "178941434",
+      "symbol": "XAUUSD",
+      "tradeType": "Buy",
+      "lots": 0.2,
+      "openPrice": 3359.298,
+      "closePrice": 3362.439,
+      "orderProfit": 62.82,
+      "commission": -1.4,
+      "swap": 0,
+      "openTime": "2025-06-20T13:31:31",
+      "closeTime": "2025-06-20T13:36:28"
+    }
+  ],
+  "orderInfo": {
+    "total": {
+      "total": 3,
+      "total_lots": 0.6,
+      "total_orderProfit": 208.97
+    }
   }
 }
 ```
 
-### Visualization Output
-- **Charts**: Base64-encoded chart images
-- **Chart Configurations**: Chart.js configuration objects
-- **Interactive Data**: Data formatted for external visualization tools
+## 📊 输出格式 | Output Format
 
-## 🎯 Use Cases
-
-### Risk Management
-- Monitor portfolio risk in real-time
-- Set up automated risk alerts
-- Perform stress testing scenarios
-- Calculate regulatory risk metrics
-
-### Performance Analysis
-- Track trading performance over time
-- Compare against benchmarks
-- Identify performance drivers
-- Generate performance reports
-
-### Strategy Development
-- Analyze trading patterns
-- Generate trading signals
-- Optimize portfolio allocation
-- Backtest strategy performance
-
-### Compliance & Reporting
-- Generate regulatory reports
-- Document risk management procedures
-- Create audit trails
-- Produce client reports
-
-## 🔍 Analysis Methods
-
-### Statistical Methods
-- Linear regression for trend analysis
-- Monte Carlo simulation for stress testing
-- Rolling window calculations for time series analysis
-- Correlation analysis for diversification insights
-
-### Risk Metrics
-- Value at Risk (VaR) - Historical and Parametric
-- Expected Shortfall (Conditional VaR)
-- Maximum Drawdown
-- Sharpe, Sortino, and Calmar ratios
-
-### Machine Learning
-- Anomaly detection using statistical methods
-- Pattern recognition in trading behavior
-- Predictive modeling for price and risk forecasting
-- Signal generation using multiple factors
-
-## ⚙️ Advanced Configuration
-
-### Time Period Options
-- Last 7, 30, 90 days, or 1 year
-- Custom date ranges
-- All available data
-
-### Analysis Parameters
-- Confidence levels for risk calculations (90%, 95%, 99%)
-- Prediction horizons (1-365 days)
-- Rolling window sizes
-- Visualization preferences
-
-### Performance Settings
-- High precision mode for accurate calculations
-- Caching for improved performance
-- Debug mode for troubleshooting
-- Maximum data point limits
-
-## 🤝 Integration
-
-### Compatible Nodes
-- **MyPet Stocks**: Primary data source
-- **HTTP Request**: For external data feeds
-- **Spreadsheet File**: For historical data import
-- **Database**: For data persistence
-- **Email**: For report distribution
-
-### Output Destinations
-- **Webhook**: Real-time alerts and notifications
-- **File System**: Save reports and charts
-- **Database**: Store analysis results
-- **API Endpoints**: Integration with external systems
-
-## 📚 Examples
-
-### Risk Monitoring Workflow
-```
-Schedule Trigger → MyPet Stocks → MyPet Analytics (Risk Assessment) → IF (High Risk) → Send Alert Email
+### 分析结果 | Analysis Results
+```json
+{
+  "analysis": {
+    "summary": {
+      "totalTrades": 150,
+      "netProfit": 12500.50,
+      "winRate": 65.5,
+      "performanceScore": 78,
+      "grade": "B"
+    },
+    "insights": [
+      "High win rate indicates good trade selection",
+      "Consider improving risk/reward ratio"
+    ]
+  },
+  "metadata": {
+    "version": "1.0.13",
+    "analysisType": "performance",
+    "dataPoints": 150,
+    "timestamp": "2025-06-22T..."
+  },
+  "charts": [
+    {
+      "type": "pie",
+      "title": "Win/Loss Distribution",
+      "data": { "labels": [...], "values": [...] }
+    }
+  ],
+  "htmlReport": "<!-- Professional HTML report -->"
+}
 ```
 
-### Performance Reporting
+### 输出字段说明 | Output Fields
+- **totalTrades**: 总交易数 | Total number of trades
+- **netProfit**: 净盈利 | Net profit amount
+- **winRate**: 胜率百分比 | Win rate percentage
+- **performanceScore**: 综合评分 (0-100) | Performance score (0-100)
+- **grade**: 等级评定 | Grade rating (A+ to F)
+- **insights**: 智能建议 | Smart recommendations
+
+## 💼 使用场景 | Use Cases
+
+### 个人交易者 | Individual Traders
+- **中文**: 分析交易绩效，识别问题，制定改进策略
+- **English**: Analyze trading performance, identify issues, develop improvement strategies
+
+### 投资机构 | Investment Institutions
+- **中文**: 评估交易员绩效，风险管理，合规报告
+- **English**: Evaluate trader performance, risk management, compliance reporting
+
+### 量化团队 | Quantitative Teams
+- **中文**: 策略回测，风险监控，绩效基准对比
+- **English**: Strategy backtesting, risk monitoring, performance benchmarking
+
+## 🔧 技术规格 | Technical Specifications
+
+### 兼容性 | Compatibility
+- **n8n**: v0.190.0+
+- **Node.js**: v16.0.0+
+- **数据格式 | Data Formats**: orders, trades, data, result.results.data
+
+### 性能特性 | Performance Features
+- **高效处理 | Efficient Processing**: 优化的数据处理算法 | Optimized data processing algorithms
+- **容错处理 | Fault Tolerance**: 智能处理异常数据 | Intelligent handling of abnormal data
+- **调试友好 | Debug-Friendly**: 详细的执行日志 | Detailed execution logs
+
+## 📚 工作流示例 | Workflow Examples
+
+### 风险监控 | Risk Monitoring
 ```
-MyPet Stocks → MyPet Analytics (Performance Metrics) → Generate PDF Report → Save to Cloud Storage
+定时触发器 → MyPet Stocks API → MyPet Analytics (风险评估) → 条件判断 → 邮件警报
+Schedule Trigger → MyPet Stocks API → MyPet Analytics (Risk Assessment) → IF → Email Alert
 ```
 
-### Trading Signal Generation
+### 绩效报告 | Performance Reporting
 ```
-MyPet Stocks → MyPet Analytics (Predictive Models) → Filter Signals → Execute Trades via API
-```
-
-## 🐛 Troubleshooting
-
-### Common Issues
-1. **Insufficient Data**: Ensure minimum data requirements are met (varies by analysis type)
-2. **Memory Issues**: Reduce data size or enable data sampling for large datasets
-3. **Timeout Errors**: Increase timeout settings for complex calculations
-4. **Chart Generation**: Ensure sufficient memory for visualization generation
-
-### Debug Mode
-Enable debug mode in credentials to get detailed execution information and error diagnostics.
-
-## 🔄 Updates & Changelog
-
-### Version 1.0.0
-- Initial release with comprehensive analytics suite
-- Support for all major analysis types
-- Visualization and reporting capabilities
-- Integration with MyPet Stocks ecosystem
-
-## 🤝 Contributing
-
-We welcome contributions! Please see our [Contributing Guide](CONTRIBUTING.md) for details.
-
-### Development Setup
-```bash
-git clone https://github.com/yingcaihuang/n8n-nodes-mypet-analytics.git
-cd n8n-nodes-mypet-analytics
-npm install
-npm run dev
+MyPet Stocks API → MyPet Analytics (绩效分析) → HTML 报告 → 邮件发送
+MyPet Stocks API → MyPet Analytics (Performance) → HTML Report → Email Send
 ```
 
-## 📄 License
+### 数据分析 | Data Analysis
+```
+MyPet Stocks API → MyPet Analytics (基础统计) → 数据库存储 → 仪表板显示
+MyPet Stocks API → MyPet Analytics (Basic Stats) → Database → Dashboard
+```
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+## 🎨 HTML 报告特性 | HTML Report Features
 
-## 🙏 Acknowledgments
+### 专业设计 | Professional Design
+- **响应式布局 | Responsive Layout**: 适配桌面和移动设备 | Desktop and mobile compatible
+- **现代样式 | Modern Styling**: 专业的视觉设计 | Professional visual design
+- **内嵌图表 | Embedded Charts**: Base64 编码，无外部依赖 | Base64 encoded, no external dependencies
 
-- Built on top of the excellent [MyPet Stocks](https://github.com/yingcaihuang/n8n-nodes-mypet-stocks) foundation
-- Powered by the [n8n](https://n8n.io) automation platform
-- Uses [Chart.js](https://www.chartjs.org/) for visualization
-- Statistical calculations powered by [Simple Statistics](https://simplestatistics.org/)
+### 邮件友好 | Email-Friendly
+- **自包含格式 | Self-contained Format**: 单文件包含所有内容 | Single file contains everything
+- **兼容性强 | High Compatibility**: 支持主流邮件客户端 | Supports major email clients
+- **打印友好 | Print-Friendly**: 优化的打印样式 | Optimized print styles
 
-## 📞 Support
+## 🔄 版本信息 | Version Info
 
-- **Documentation**: [Full Documentation](https://github.com/yingcaihuang/n8n-nodes-mypet-analytics/wiki)
-- **Issues**: [GitHub Issues](https://github.com/yingcaihuang/n8n-nodes-mypet-analytics/issues)
-- **Discussions**: [GitHub Discussions](https://github.com/yingcaihuang/n8n-nodes-mypet-analytics/discussions)
+- **当前版本 | Current Version**: v1.0.13
+- **更新日期 | Last Updated**: 2025-06-22
+- **兼容性 | Compatibility**: n8n v0.190.0+
+- **Node.js**: v16.0.0+
+
+## 📄 许可证 | License
+
+MIT
+
+## 📞 支持 | Support
+
+- **GitHub**: https://github.com/yingcaihuang/n8n-nodes-mypet-analytics
+- **Issues**: https://github.com/yingcaihuang/n8n-nodes-mypet-analytics/issues
 - **Email**: analytics@mypet.run
 
 ---
 
-**Disclaimer**: This tool is for analysis purposes only. Trading involves risk, and past performance does not guarantee future results. Always conduct your own research and consider consulting with financial professionals before making trading decisions.
+**让数据驱动您的交易决策 | Let Data Drive Your Trading Decisions** 📈
+
+**免责声明 | Disclaimer**: 此工具仅用于分析目的。交易涉及风险，过往表现不代表未来结果。在做出交易决策前，请务必进行自己的研究并考虑咨询金融专业人士。
+This tool is for analysis purposes only. Trading involves risk, and past performance does not guarantee future results. Always conduct your own research and consider consulting with financial professionals before making trading decisions.

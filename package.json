@@ -1,7 +1,11 @@
 {
   "name": "n8n-nodes-mypet-analytics",
-  "version": "1.0.0",
-  "description": "Advanced analytics node for MyPet Stocks trading data analysis with profit/loss analysis, risk assessment, and performance metrics",
+
+
+
+
+  "version": "1.0.14",
+  "description": "专业的 MyPet Stocks 交易数据分析节点，提供盈利分析、风险评估、绩效评分和可视化报告功能 | Professional MyPet Stocks trading data analysis node with profit analysis, risk assessment, performance scoring and visualization reports",
   "keywords": [
     "n8n-community-node-package",
     "n8n",
@@ -28,7 +32,9 @@
   },
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Tests passed - ready for production\""
+    "test": "node quick-test.js",
+    "test:full": "node test/test-mypet-analytics.js",
+    "test:quick": "node quick-test.js"
   },
   "files": [
     "dist",

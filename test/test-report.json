@@ -1,0 +1,1595 @@
+{
+  "timestamp": "2025-06-22T07:04:49.399Z",
+  "summary": {
+    "totalTests": 24,
+    "passedTests": 24,
+    "failedTests": 0,
+    "successRate": 100
+  },
+  "results": [
+    {
+      "name": "mypetStocksFormat - basic",
+      "dataSet": "mypetStocksFormat",
+      "config": {
+        "analysisType": "basic",
+        "timePeriod": "30d",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 2,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalTrades": 3,
+                  "closedTrades": 3,
+                  "openTrades": 0,
+                  "totalVolume": 0.45,
+                  "totalProfit": 85,
+                  "totalCommission": 7.5,
+                  "netProfit": 77.5
+                },
+                "symbolDistribution": {
+                  "EURUSD": 1,
+                  "GBPUSD": 1,
+                  "USDJPY": 1
+                },
+                "insights": [
+                  "Analyzed 3 total trades",
+                  "Win rate: 67%"
+                ],
+                "debug": {
+                  "sampleTrade": {
+                    "id": "12345",
+                    "symbol": "EURUSD",
+                    "volume": 0.1,
+                    "openPrice": 1.1,
+                    "closePrice": 1.105,
+                    "profit": 50,
+                    "commission": 2,
+                    "openTime": "2025-01-01T10:00:00.000Z",
+                    "closeTime": "2025-01-01T11:00:00.000Z",
+                    "type": "unknown",
+                    "swap": 0,
+                    "comment": ""
+                  },
+                  "tradeFields": [
+                    "id",
+                    "symbol",
+                    "volume",
+                    "openPrice",
+                    "closePrice",
+                    "profit",
+                    "commission",
+                    "openTime",
+                    "closeTime",
+                    "type",
+                    "swap",
+                    "comment"
+                  ]
+                }
+              },
+              "metadata": {
+                "analysisType": "basic",
+                "timePeriod": "30d",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:46.645Z",
+                "dataPoints": 3,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "mypetStocksFormat - profit",
+      "dataSet": "mypetStocksFormat",
+      "config": {
+        "analysisType": "profit",
+        "timePeriod": "30d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 2,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalProfit": 85,
+                  "winRate": 66.67,
+                  "profitFactor": 3.13,
+                  "averageWin": 62.5,
+                  "averageLoss": 40,
+                  "winningTrades": 2,
+                  "losingTrades": 1,
+                  "largestWin": 75,
+                  "largestLoss": -40
+                },
+                "distribution": {
+                  "profits": [
+                    75,
+                    50,
+                    -40
+                  ],
+                  "profitRanges": {
+                    "Large Loss (< -100)": 0,
+                    "Medium Loss (-100 to -50)": 0,
+                    "Small Loss (-50 to 0)": 1,
+                    "Small Profit (0 to 50)": 0,
+                    "Medium Profit (50 to 100)": 2,
+                    "Large Profit (> 100)": 0
+                  }
+                },
+                "insights": [
+                  "High win rate indicates good trade selection",
+                  "Strong profit factor shows good risk/reward management",
+                  "Overall profitable trading performance"
+                ]
+              },
+              "metadata": {
+                "analysisType": "profit",
+                "timePeriod": "30d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:46.748Z",
+                "dataPoints": 3,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "pie",
+                  "title": "Win/Loss Distribution",
+                  "data": {
+                    "labels": [
+                      "Winning Trades",
+                      "Losing Trades"
+                    ],
+                    "values": [
+                      2,
+                      1
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "mypetStocksFormat - risk",
+      "dataSet": "mypetStocksFormat",
+      "config": {
+        "analysisType": "risk",
+        "timePeriod": "90d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 3,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "volatility": 4.94,
+                  "var95": -40,
+                  "maxDrawdown": 80,
+                  "sharpeRatio": 0.57,
+                  "riskLevel": "High"
+                },
+                "metrics": {
+                  "meanReturn": 28.33,
+                  "standardDeviation": 49.39,
+                  "skewness": -0.57,
+                  "kurtosis": 0
+                },
+                "insights": [
+                  "High maximum drawdown indicates significant risk exposure"
+                ]
+              },
+              "metadata": {
+                "analysisType": "risk",
+                "timePeriod": "90d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:46.858Z",
+                "dataPoints": 3,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "bar",
+                  "title": "Risk Metrics",
+                  "data": {
+                    "labels": [
+                      "Volatility %",
+                      "Max Drawdown %",
+                      "Sharpe Ratio x10"
+                    ],
+                    "values": [
+                      4.94,
+                      80,
+                      5.699999999999999
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "mypetStocksFormat - performance",
+      "dataSet": "mypetStocksFormat",
+      "config": {
+        "analysisType": "performance",
+        "timePeriod": "all",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 5,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "performanceScore": 70,
+                  "grade": "B",
+                  "totalTrades": 3,
+                  "netProfit": 77.5,
+                  "winRate": 66.67,
+                  "profitFactor": 3.13,
+                  "maxDrawdown": 80,
+                  "sharpeRatio": 0.57
+                },
+                "breakdown": {
+                  "profitability": 100,
+                  "consistency": 66.67,
+                  "riskManagement": 20,
+                  "efficiency": 78.49999999999999
+                },
+                "recommendations": [
+                  "Implement stricter risk management to reduce drawdowns"
+                ]
+              },
+              "metadata": {
+                "analysisType": "performance",
+                "timePeriod": "all",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:46.969Z",
+                "dataPoints": 3,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "directArrayFormat - basic",
+      "dataSet": "directArrayFormat",
+      "config": {
+        "analysisType": "basic",
+        "timePeriod": "30d",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 3,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalTrades": 2,
+                  "closedTrades": 2,
+                  "openTrades": 0,
+                  "totalVolume": 0.15,
+                  "totalProfit": -35,
+                  "totalCommission": 3,
+                  "netProfit": -38
+                },
+                "symbolDistribution": {
+                  "EURUSD": 1,
+                  "GBPUSD": 1
+                },
+                "insights": [
+                  "Analyzed 2 total trades",
+                  "Win rate: 50%"
+                ],
+                "debug": {
+                  "sampleTrade": {
+                    "id": "98765",
+                    "symbol": "EURUSD",
+                    "volume": 0.05,
+                    "openPrice": 1.095,
+                    "closePrice": 1.098,
+                    "profit": 15,
+                    "commission": 1,
+                    "openTime": "2025-01-03T08:00:00.000Z",
+                    "closeTime": "2025-01-03T09:30:00.000Z",
+                    "type": "unknown",
+                    "swap": 0,
+                    "comment": ""
+                  },
+                  "tradeFields": [
+                    "id",
+                    "symbol",
+                    "volume",
+                    "openPrice",
+                    "closePrice",
+                    "profit",
+                    "commission",
+                    "openTime",
+                    "closeTime",
+                    "type",
+                    "swap",
+                    "comment"
+                  ]
+                }
+              },
+              "metadata": {
+                "analysisType": "basic",
+                "timePeriod": "30d",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:47.080Z",
+                "dataPoints": 2,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "directArrayFormat - profit",
+      "dataSet": "directArrayFormat",
+      "config": {
+        "analysisType": "profit",
+        "timePeriod": "30d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalProfit": -35,
+                  "winRate": 50,
+                  "profitFactor": 0.3,
+                  "averageWin": 15,
+                  "averageLoss": 50,
+                  "winningTrades": 1,
+                  "losingTrades": 1,
+                  "largestWin": 15,
+                  "largestLoss": -50
+                },
+                "distribution": {
+                  "profits": [
+                    15,
+                    -50
+                  ],
+                  "profitRanges": {
+                    "Large Loss (< -100)": 0,
+                    "Medium Loss (-100 to -50)": 0,
+                    "Small Loss (-50 to 0)": 1,
+                    "Small Profit (0 to 50)": 1,
+                    "Medium Profit (50 to 100)": 0,
+                    "Large Profit (> 100)": 0
+                  }
+                },
+                "insights": [
+                  "Profit factor below 1.0 indicates losses exceed profits",
+                  "Overall trading performance shows losses"
+                ]
+              },
+              "metadata": {
+                "analysisType": "profit",
+                "timePeriod": "30d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:47.206Z",
+                "dataPoints": 2,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "0",
+                  "1"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "pie",
+                  "title": "Win/Loss Distribution",
+                  "data": {
+                    "labels": [
+                      "Winning Trades",
+                      "Losing Trades"
+                    ],
+                    "values": [
+                      1,
+                      1
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "directArrayFormat - risk",
+      "dataSet": "directArrayFormat",
+      "config": {
+        "analysisType": "risk",
+        "timePeriod": "90d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "volatility": 3.25,
+                  "var95": -50,
+                  "maxDrawdown": 333.33,
+                  "sharpeRatio": -0.54,
+                  "riskLevel": "High"
+                },
+                "metrics": {
+                  "meanReturn": -17.5,
+                  "standardDeviation": 32.5,
+                  "skewness": 0,
+                  "kurtosis": 0
+                },
+                "insights": [
+                  "High maximum drawdown indicates significant risk exposure"
+                ]
+              },
+              "metadata": {
+                "analysisType": "risk",
+                "timePeriod": "90d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:47.327Z",
+                "dataPoints": 2,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "0",
+                  "1"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "bar",
+                  "title": "Risk Metrics",
+                  "data": {
+                    "labels": [
+                      "Volatility %",
+                      "Max Drawdown %",
+                      "Sharpe Ratio x10"
+                    ],
+                    "values": [
+                      3.25,
+                      333.33,
+                      -5.4
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "directArrayFormat - performance",
+      "dataSet": "directArrayFormat",
+      "config": {
+        "analysisType": "performance",
+        "timePeriod": "all",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 6,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "performanceScore": 30,
+                  "grade": "F",
+                  "totalTrades": 2,
+                  "netProfit": -38,
+                  "winRate": 50,
+                  "profitFactor": 0.3,
+                  "maxDrawdown": 333.33,
+                  "sharpeRatio": -0.54
+                },
+                "breakdown": {
+                  "profitability": 15,
+                  "consistency": 50,
+                  "riskManagement": 0,
+                  "efficiency": 23
+                },
+                "recommendations": [
+                  "Focus on improving risk/reward ratio per trade",
+                  "Implement stricter risk management to reduce drawdowns"
+                ]
+              },
+              "metadata": {
+                "analysisType": "performance",
+                "timePeriod": "all",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:47.440Z",
+                "dataPoints": 2,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "0",
+                  "1"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "dataWrappedFormat - basic",
+      "dataSet": "dataWrappedFormat",
+      "config": {
+        "analysisType": "basic",
+        "timePeriod": "30d",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 7,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalTrades": 1,
+                  "closedTrades": 1,
+                  "openTrades": 0,
+                  "totalVolume": 0.08,
+                  "totalProfit": 16,
+                  "totalCommission": 1.5,
+                  "netProfit": 14.5
+                },
+                "symbolDistribution": {
+                  "USDCAD": 1
+                },
+                "insights": [
+                  "Analyzed 1 total trades",
+                  "Win rate: 100%"
+                ],
+                "debug": {
+                  "sampleTrade": {
+                    "id": "555",
+                    "symbol": "USDCAD",
+                    "volume": 0.08,
+                    "openPrice": 1.35,
+                    "closePrice": 1.352,
+                    "profit": 16,
+                    "commission": 1.5,
+                    "openTime": "2025-01-04T11:00:00.000Z",
+                    "closeTime": "2025-01-04T12:30:00.000Z",
+                    "type": "unknown",
+                    "swap": 0,
+                    "comment": ""
+                  },
+                  "tradeFields": [
+                    "id",
+                    "symbol",
+                    "volume",
+                    "openPrice",
+                    "closePrice",
+                    "profit",
+                    "commission",
+                    "openTime",
+                    "closeTime",
+                    "type",
+                    "swap",
+                    "comment"
+                  ]
+                }
+              },
+              "metadata": {
+                "analysisType": "basic",
+                "timePeriod": "30d",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:47.566Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "data",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "dataWrappedFormat - profit",
+      "dataSet": "dataWrappedFormat",
+      "config": {
+        "analysisType": "profit",
+        "timePeriod": "30d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 1,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalProfit": 16,
+                  "winRate": 100,
+                  "profitFactor": 0,
+                  "averageWin": 16,
+                  "averageLoss": 0,
+                  "winningTrades": 1,
+                  "losingTrades": 0,
+                  "largestWin": 16,
+                  "largestLoss": 16
+                },
+                "distribution": {
+                  "profits": [
+                    16
+                  ],
+                  "profitRanges": {
+                    "Large Loss (< -100)": 0,
+                    "Medium Loss (-100 to -50)": 0,
+                    "Small Loss (-50 to 0)": 0,
+                    "Small Profit (0 to 50)": 1,
+                    "Medium Profit (50 to 100)": 0,
+                    "Large Profit (> 100)": 0
+                  }
+                },
+                "insights": [
+                  "High win rate indicates good trade selection",
+                  "Profit factor below 1.0 indicates losses exceed profits",
+                  "Overall profitable trading performance"
+                ]
+              },
+              "metadata": {
+                "analysisType": "profit",
+                "timePeriod": "30d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:47.682Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "data",
+                  "metadata"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "pie",
+                  "title": "Win/Loss Distribution",
+                  "data": {
+                    "labels": [
+                      "Winning Trades",
+                      "Losing Trades"
+                    ],
+                    "values": [
+                      1,
+                      0
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "dataWrappedFormat - risk",
+      "dataSet": "dataWrappedFormat",
+      "config": {
+        "analysisType": "risk",
+        "timePeriod": "90d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "volatility": 0,
+                  "var95": 16,
+                  "maxDrawdown": 0,
+                  "sharpeRatio": 0,
+                  "riskLevel": "Low"
+                },
+                "metrics": {
+                  "meanReturn": 16,
+                  "standardDeviation": 0,
+                  "skewness": 0,
+                  "kurtosis": 0
+                },
+                "insights": [
+                  "Low maximum drawdown shows good risk control",
+                  "Low volatility indicates conservative approach"
+                ]
+              },
+              "metadata": {
+                "analysisType": "risk",
+                "timePeriod": "90d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:47.798Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "data",
+                  "metadata"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "bar",
+                  "title": "Risk Metrics",
+                  "data": {
+                    "labels": [
+                      "Volatility %",
+                      "Max Drawdown %",
+                      "Sharpe Ratio x10"
+                    ],
+                    "values": [
+                      0,
+                      0,
+                      0
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "dataWrappedFormat - performance",
+      "dataSet": "dataWrappedFormat",
+      "config": {
+        "analysisType": "performance",
+        "timePeriod": "all",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "performanceScore": 63,
+                  "grade": "C",
+                  "totalTrades": 1,
+                  "netProfit": 14.5,
+                  "winRate": 100,
+                  "profitFactor": 0,
+                  "maxDrawdown": 0,
+                  "sharpeRatio": 0
+                },
+                "breakdown": {
+                  "profitability": 0,
+                  "consistency": 100,
+                  "riskManagement": 100,
+                  "efficiency": 50
+                },
+                "recommendations": [
+                  "Focus on improving risk/reward ratio per trade"
+                ]
+              },
+              "metadata": {
+                "analysisType": "performance",
+                "timePeriod": "all",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:47.909Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "data",
+                  "metadata"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "emptyData - basic",
+      "dataSet": "emptyData",
+      "config": {
+        "analysisType": "basic",
+        "timePeriod": "30d",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 5,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalTrades": 1,
+                  "closedTrades": 0,
+                  "openTrades": 1,
+                  "totalVolume": 0,
+                  "totalProfit": 0,
+                  "totalCommission": 0,
+                  "netProfit": 0
+                },
+                "symbolDistribution": {
+                  "UNKNOWN": 1
+                },
+                "insights": [
+                  "Analyzed 1 total trades"
+                ],
+                "debug": {
+                  "sampleTrade": {
+                    "id": "trade_0",
+                    "symbol": "UNKNOWN",
+                    "volume": 0,
+                    "openPrice": 0,
+                    "closePrice": null,
+                    "profit": 0,
+                    "commission": 0,
+                    "openTime": "2025-06-22T07:04:48.032Z",
+                    "closeTime": null,
+                    "type": "unknown",
+                    "swap": 0,
+                    "comment": ""
+                  },
+                  "tradeFields": [
+                    "id",
+                    "symbol",
+                    "volume",
+                    "openPrice",
+                    "closePrice",
+                    "profit",
+                    "commission",
+                    "openTime",
+                    "closeTime",
+                    "type",
+                    "swap",
+                    "comment"
+                  ]
+                }
+              },
+              "metadata": {
+                "analysisType": "basic",
+                "timePeriod": "30d",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:48.033Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "emptyData - profit",
+      "dataSet": "emptyData",
+      "config": {
+        "analysisType": "profit",
+        "timePeriod": "30d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 3,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "error": "No closed trades found for profit analysis",
+                "debug": {
+                  "totalTrades": 1,
+                  "tradesWithProfit": 1,
+                  "tradesWithCloseTime": 0
+                }
+              },
+              "metadata": {
+                "analysisType": "profit",
+                "timePeriod": "30d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:48.154Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              },
+              "charts": []
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "emptyData - risk",
+      "dataSet": "emptyData",
+      "config": {
+        "analysisType": "risk",
+        "timePeriod": "90d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 6,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "error": "No closed trades found for risk analysis"
+              },
+              "metadata": {
+                "analysisType": "risk",
+                "timePeriod": "90d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:48.267Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              },
+              "charts": []
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "emptyData - performance",
+      "dataSet": "emptyData",
+      "config": {
+        "analysisType": "performance",
+        "timePeriod": "all",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "error": "Insufficient data for performance analysis",
+                "details": {
+                  "profitError": "No closed trades found for profit analysis",
+                  "riskError": "No closed trades found for risk analysis"
+                }
+              },
+              "metadata": {
+                "analysisType": "performance",
+                "timePeriod": "all",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:48.389Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "orders"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "invalidData - basic",
+      "dataSet": "invalidData",
+      "config": {
+        "analysisType": "basic",
+        "timePeriod": "30d",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 7,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalTrades": 1,
+                  "closedTrades": 0,
+                  "openTrades": 1,
+                  "totalVolume": 0,
+                  "totalProfit": 0,
+                  "totalCommission": 0,
+                  "netProfit": 0
+                },
+                "symbolDistribution": {
+                  "UNKNOWN": 1
+                },
+                "insights": [
+                  "Analyzed 1 total trades"
+                ],
+                "debug": {
+                  "sampleTrade": {
+                    "id": "trade_0",
+                    "symbol": "UNKNOWN",
+                    "volume": 0,
+                    "openPrice": 0,
+                    "closePrice": null,
+                    "profit": 0,
+                    "commission": 0,
+                    "openTime": "2025-06-22T07:04:48.500Z",
+                    "closeTime": null,
+                    "type": "unknown",
+                    "swap": 0,
+                    "comment": ""
+                  },
+                  "tradeFields": [
+                    "id",
+                    "symbol",
+                    "volume",
+                    "openPrice",
+                    "closePrice",
+                    "profit",
+                    "commission",
+                    "openTime",
+                    "closeTime",
+                    "type",
+                    "swap",
+                    "comment"
+                  ]
+                }
+              },
+              "metadata": {
+                "analysisType": "basic",
+                "timePeriod": "30d",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:48.501Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "message",
+                  "status"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "invalidData - profit",
+      "dataSet": "invalidData",
+      "config": {
+        "analysisType": "profit",
+        "timePeriod": "30d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "error": "No closed trades found for profit analysis",
+                "debug": {
+                  "totalTrades": 1,
+                  "tradesWithProfit": 1,
+                  "tradesWithCloseTime": 0
+                }
+              },
+              "metadata": {
+                "analysisType": "profit",
+                "timePeriod": "30d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:48.621Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "message",
+                  "status"
+                ]
+              },
+              "charts": []
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "invalidData - risk",
+      "dataSet": "invalidData",
+      "config": {
+        "analysisType": "risk",
+        "timePeriod": "90d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 3,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "error": "No closed trades found for risk analysis"
+              },
+              "metadata": {
+                "analysisType": "risk",
+                "timePeriod": "90d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:48.745Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "message",
+                  "status"
+                ]
+              },
+              "charts": []
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "invalidData - performance",
+      "dataSet": "invalidData",
+      "config": {
+        "analysisType": "performance",
+        "timePeriod": "all",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 4,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "error": "Insufficient data for performance analysis",
+                "details": {
+                  "profitError": "No closed trades found for profit analysis",
+                  "riskError": "No closed trades found for risk analysis"
+                }
+              },
+              "metadata": {
+                "analysisType": "performance",
+                "timePeriod": "all",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:48.855Z",
+                "dataPoints": 1,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "message",
+                  "status"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "largeDataSet - basic",
+      "dataSet": "largeDataSet",
+      "config": {
+        "analysisType": "basic",
+        "timePeriod": "30d",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 1,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalTrades": 100,
+                  "closedTrades": 100,
+                  "openTrades": 0,
+                  "totalVolume": 27.01,
+                  "totalProfit": -258.41,
+                  "totalCommission": 246.83,
+                  "netProfit": -505.24
+                },
+                "symbolDistribution": {
+                  "EURUSD": 25,
+                  "GBPUSD": 25,
+                  "USDJPY": 25,
+                  "USDCAD": 25
+                },
+                "insights": [
+                  "Analyzed 100 total trades",
+                  "Win rate: 50%"
+                ],
+                "debug": {
+                  "sampleTrade": {
+                    "id": "trade_0",
+                    "symbol": "EURUSD",
+                    "volume": 0.0957370947860736,
+                    "openPrice": 1.139610291967565,
+                    "closePrice": 1.1161750007382454,
+                    "profit": -21.996398284891505,
+                    "commission": 2.3295684111366786,
+                    "openTime": "2024-12-31T16:00:00.000Z",
+                    "closeTime": "2025-01-01T16:00:00.000Z",
+                    "type": "unknown",
+                    "swap": 0,
+                    "comment": ""
+                  },
+                  "tradeFields": [
+                    "id",
+                    "symbol",
+                    "volume",
+                    "openPrice",
+                    "closePrice",
+                    "profit",
+                    "commission",
+                    "openTime",
+                    "closeTime",
+                    "type",
+                    "swap",
+                    "comment"
+                  ]
+                }
+              },
+              "metadata": {
+                "analysisType": "basic",
+                "timePeriod": "30d",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:48.959Z",
+                "dataPoints": 100,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "trades"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "largeDataSet - profit",
+      "dataSet": "largeDataSet",
+      "config": {
+        "analysisType": "profit",
+        "timePeriod": "30d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 1,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "totalProfit": -258.41,
+                  "winRate": 50,
+                  "profitFactor": 0.9,
+                  "averageWin": 46.65,
+                  "averageLoss": 51.82,
+                  "winningTrades": 50,
+                  "losingTrades": 50,
+                  "largestWin": 97.73338388477733,
+                  "largestLoss": -97.74535847211503
+                },
+                "distribution": {
+                  "profits": [
+                    97.73338388477733,
+                    96.38322339681937,
+                    96.25732890064809,
+                    95.66686709893855,
+                    92.9881160305531,
+                    92.41938018304464,
+                    88.02135639759645,
+                    87.29580939849133,
+                    86.01525028119727,
+                    85.64790595273881,
+                    82.43485587701178,
+                    79.22423390222546,
+                    78.12746284703312,
+                    77.12700659599841,
+                    74.85654889845125,
+                    71.18674917081043,
+                    70.63976173347713,
+                    68.41799057102507,
+                    63.33838289625451,
+                    63.07634950343459,
+                    52.104329587760965,
+                    51.63570277394594,
+                    50.15517522121211,
+                    48.71766832176587,
+                    46.97983894114692,
+                    41.00497913123946,
+                    37.19647272825664,
+                    34.27621937214762,
+                    33.751592681982466,
+                    27.693515861961117,
+                    24.807070952999766,
+                    24.536942005961883,
+                    21.442177919720784,
+                    21.426636193023896,
+                    21.421520612547074,
+                    17.80806600888485,
+                    16.951048812570058,
+                    15.892905626251252,
+                    15.765230147209897,
+                    12.774650731338788,
+                    11.066755689833085,
+                    10.995574832679367,
+                    10.528136404069555,
+                    10.209564323218245,
+                    6.3891039795431315,
+                    5.833446657277497,
+                    5.3822416675722184,
+                    4.03095307546617,
+                    2.397409031975206,
+                    2.3588626368037158,
+                    -2.3448537701578953,
+                    -6.127653308870018,
+                    -7.633603778805531,
+                    -11.253602589842249,
+                    -11.398680956862517,
+                    -14.514836133670705,
+                    -18.12734813903969,
+                    -19.677783412711936,
+                    -21.996398284891505,
+                    -24.44117666076928,
+                    -24.702631896616765,
+                    -30.264624768421868,
+                    -34.10334434802582,
+                    -35.18438617741193,
+                    -35.76623655341744,
+                    -36.11290058241683,
+                    -36.454125154182606,
+                    -36.87407065627583,
+                    -37.93683783919533,
+                    -40.42984123902782,
+                    -43.6286217329251,
+                    -43.7579426259461,
+                    -44.20310758139499,
+                    -45.04087228334317,
+                    -51.89416152481594,
+                    -52.911267576680345,
+                    -55.37648211517312,
+                    -55.8616484447445,
+                    -56.1125719184647,
+                    -66.0224914280926,
+                    -66.74426498333771,
+                    -66.99293530827823,
+                    -67.71442553025415,
+                    -67.71687377341911,
+                    -67.79491417643398,
+                    -71.27401031701517,
+                    -71.48298486246674,
+                    -74.24884214508319,
+                    -74.66244654877059,
+                    -75.29298464972851,
+                    -78.91643152322354,
+                    -82.18586975012849,
+                    -82.81359429998028,
+                    -83.17475366037526,
+                    -84.33042752271227,
+                    -93.11413986546984,
+                    -94.25087272958956,
+                    -95.08450631120593,
+                    -95.10342678651082,
+                    -97.74535847211503
+                  ],
+                  "profitRanges": {
+                    "Large Loss (< -100)": 0,
+                    "Medium Loss (-100 to -50)": 26,
+                    "Small Loss (-50 to 0)": 24,
+                    "Small Profit (0 to 50)": 27,
+                    "Medium Profit (50 to 100)": 23,
+                    "Large Profit (> 100)": 0
+                  }
+                },
+                "insights": [
+                  "Profit factor below 1.0 indicates losses exceed profits",
+                  "Overall trading performance shows losses"
+                ]
+              },
+              "metadata": {
+                "analysisType": "profit",
+                "timePeriod": "30d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:49.068Z",
+                "dataPoints": 100,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "trades"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "pie",
+                  "title": "Win/Loss Distribution",
+                  "data": {
+                    "labels": [
+                      "Winning Trades",
+                      "Losing Trades"
+                    ],
+                    "values": [
+                      50,
+                      50
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "largeDataSet - risk",
+      "dataSet": "largeDataSet",
+      "config": {
+        "analysisType": "risk",
+        "timePeriod": "90d",
+        "includeCharts": true
+      },
+      "success": true,
+      "executionTime": 6,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "volatility": 5.75,
+                  "var95": -84.33,
+                  "maxDrawdown": 8694.26,
+                  "sharpeRatio": -0.04,
+                  "riskLevel": "High"
+                },
+                "metrics": {
+                  "meanReturn": -2.58,
+                  "standardDeviation": 57.51,
+                  "skewness": 0.14,
+                  "kurtosis": -1.12
+                },
+                "insights": [
+                  "High maximum drawdown indicates significant risk exposure",
+                  "High volatility suggests aggressive trading style"
+                ]
+              },
+              "metadata": {
+                "analysisType": "risk",
+                "timePeriod": "90d",
+                "includeCharts": true,
+                "timestamp": "2025-06-22T07:04:49.182Z",
+                "dataPoints": 100,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "trades"
+                ]
+              },
+              "charts": [
+                {
+                  "type": "bar",
+                  "title": "Risk Metrics",
+                  "data": {
+                    "labels": [
+                      "Volatility %",
+                      "Max Drawdown %",
+                      "Sharpe Ratio x10"
+                    ],
+                    "values": [
+                      5.75,
+                      8694.26,
+                      -0.4
+                    ]
+                  }
+                }
+              ]
+            }
+          }
+        ]
+      ]
+    },
+    {
+      "name": "largeDataSet - performance",
+      "dataSet": "largeDataSet",
+      "config": {
+        "analysisType": "performance",
+        "timePeriod": "all",
+        "includeCharts": false
+      },
+      "success": true,
+      "executionTime": 3,
+      "result": [
+        [
+          {
+            "json": {
+              "analysis": {
+                "summary": {
+                  "performanceScore": 44,
+                  "grade": "F",
+                  "totalTrades": 100,
+                  "netProfit": -505.24,
+                  "winRate": 50,
+                  "profitFactor": 0.9,
+                  "maxDrawdown": 8694.26,
+                  "sharpeRatio": -0.04
+                },
+                "breakdown": {
+                  "profitability": 45,
+                  "consistency": 50,
+                  "riskManagement": 0,
+                  "efficiency": 48
+                },
+                "recommendations": [
+                  "Focus on improving risk/reward ratio per trade",
+                  "Implement stricter risk management to reduce drawdowns"
+                ]
+              },
+              "metadata": {
+                "analysisType": "performance",
+                "timePeriod": "all",
+                "includeCharts": false,
+                "timestamp": "2025-06-22T07:04:49.289Z",
+                "dataPoints": 100,
+                "version": "1.0.1",
+                "inputDataStructure": [
+                  "trades"
+                ]
+              }
+            }
+          }
+        ]
+      ]
+    }
+  ]
+}

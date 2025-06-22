@@ -1,0 +1,245 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MyPet Analytics Report - profit</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        .header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 2.5em;
+            font-weight: 300;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            opacity: 0.9;
+            font-size: 1.1em;
+        }
+        .content {
+            padding: 30px;
+        }
+        .section {
+            margin-bottom: 40px;
+            padding: 25px;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+        .section h2 {
+            margin-top: 0;
+            color: #667eea;
+            font-size: 1.8em;
+            font-weight: 500;
+        }
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 20px 0;
+        }
+        .metric-card {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            text-align: center;
+            border-top: 3px solid #667eea;
+        }
+        .metric-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: #667eea;
+            margin: 10px 0;
+        }
+        .metric-label {
+            color: #666;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .positive { color: #28a745; }
+        .negative { color: #dc3545; }
+        .neutral { color: #6c757d; }
+        .insights {
+            background: #e3f2fd;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+        .insights h3 {
+            margin-top: 0;
+            color: #1976d2;
+        }
+        .insights ul {
+            margin: 0;
+            padding-left: 20px;
+        }
+        .insights li {
+            margin: 8px 0;
+            color: #424242;
+        }
+        .chart-container {
+            margin: 30px 0;
+            text-align: center;
+        }
+        .chart-canvas {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+        .footer {
+            background: #f8f9fa;
+            padding: 20px 30px;
+            text-align: center;
+            color: #666;
+            border-top: 1px solid #dee2e6;
+        }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        .data-table th,
+        .data-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #dee2e6;
+        }
+        .data-table th {
+            background: #667eea;
+            color: white;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            letter-spacing: 1px;
+        }
+        .data-table tr:hover {
+            background: #f8f9fa;
+        }
+        @media (max-width: 768px) {
+            .metrics-grid {
+                grid-template-columns: 1fr;
+            }
+            .header h1 {
+                font-size: 2em;
+            }
+            .content {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 MyPet Analytics Report</h1>
+            <p>Analysis Type: PROFIT | Generated: 2025/6/22 16:31:49</p>
+        </div>
+
+        <div class="content">
+            
+        <div class="section">
+            <h2>📈 Summary Statistics</h2>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Total Trades</div>
+                    <div class="metric-value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Closed Trades</div>
+                    <div class="metric-value">0</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Total Profit</div>
+                    <div class="metric-value positive">208.97</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Net Profit</div>
+                    <div class="metric-value positive">0.00</div>
+                </div>
+                
+                <div class="metric-card">
+                    <div class="metric-label">Win Rate</div>
+                    <div class="metric-value">66.7%</div>
+                </div>
+                
+            </div>
+        </div>
+    
+            
+        <div class="section">
+            <h2>📊 Charts</h2>
+            
+                <div class="chart-container">
+                    <h3>Win/Loss Distribution</h3>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gPHRleHQgeD0iMjAwIiB5PSIzMCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzMzMyI+V2luL0xvc3MgRGlzdHJpYnV0aW9uPC90ZXh0PiA8cGF0aCBkPSJNIDIwMCAxNTAgTCAzMTAgMTUwIEEgMTEwIDExMCAwIDEgMSAxNDQuOTk5OTk5OTk5OTk5OTQgNTQuNzM3MjA1NTgzNzExNzcgWiIgZmlsbD0iIzY2N2VlYSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTSAyMDAgMTUwIEwgMTQ0Ljk5OTk5OTk5OTk5OTk0IDU0LjczNzIwNTU4MzcxMTc3IEEgMTEwIDExMCAwIDAgMSAzMTAgMTQ5Ljk5OTk5OTk5OTk5OTk3IFoiIGZpbGw9IiM3NjRiYTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMiIvPiA8L3N2Zz4=" alt="Win/Loss Distribution" class="chart-canvas" />
+                    <div style="margin-top: 20px; display: flex; flex-wrap: wrap; justify-content: center; gap: 15px;"><div style="display: flex; align-items: center; margin: 5px 0;">
+            <div style="width: 20px; height: 20px; background: #667eea; margin-right: 10px; border-radius: 3px;"></div>
+            <span>Winning Trades: 2 (66.7%)</span>
+        </div><div style="display: flex; align-items: center; margin: 5px 0;">
+            <div style="width: 20px; height: 20px; background: #764ba2; margin-right: 10px; border-radius: 3px;"></div>
+            <span>Losing Trades: 1 (33.3%)</span>
+        </div></div>
+                </div>
+            
+                <div class="chart-container">
+                    <h3>Profit Metrics</h3>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gPHRleHQgeD0iMjUwIiB5PSIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzMzMyI+UHJvZml0IE1ldHJpY3M8L3RleHQ+IDxyZWN0IHg9IjYwIiB5PSI1MCIgd2lkdGg9IjQxMCIgaGVpZ2h0PSIxOTAiIGZpbGw9IiNmOGY5ZmEiIHN0cm9rZT0iI2RlZTJlNiIvPiA8bGluZSB4MT0iNjAiIHkxPSI1MCIgeDI9IjYwIiB5Mj0iMjQwIiBzdHJva2U9IiM2NjYiIHN0cm9rZS13aWR0aD0iMSIvPiA8bGluZSB4MT0iNjAiIHkxPSIyNDAiIHgyPSI0NzAiIHkyPSIyNDAiIHN0cm9rZT0iIzY2NiIgc3Ryb2tlLXdpZHRoPSIxIi8+IDxyZWN0IHg9IjcwLjI1IiB5PSI1MCIgd2lkdGg9IjgyIiBoZWlnaHQ9IjE5MCIgZmlsbD0iIzY2N2VlYSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMTExLjI1IiB5PSI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzMzIj4yMDkuMDwvdGV4dD48cmVjdCB4PSIxNzIuNzUiIHk9IjExNy43MTg4MTEzMTI2Mjg2IiB3aWR0aD0iODIiIGhlaWdodD0iMTIyLjI4MTE4ODY4NzM3MTQiIGZpbGw9IiM3NjRiYTIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjIxMy43NSIgeT0iMTEyLjcxODgxMTMxMjYyODYiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzMzMyI+MTM0LjU8L3RleHQ+PHJlY3QgeD0iMjc1LjI1IiB5PSIxODUuNDQ2NzE0ODM5NDUwNjQiIHdpZHRoPSI4MiIgaGVpZ2h0PSI1NC41NTMyODUxNjA1NDkzNiIgZmlsbD0iI2YwOTNmYiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMzE2LjI1IiB5PSIxODAuNDQ2NzE0ODM5NDUwNjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzMzMyI+NjAuMDwvdGV4dD48cmVjdCB4PSIzNzcuNzUiIHk9IjE5OS4yNjY4ODA0MTM0NTY0OCIgd2lkdGg9IjgyIiBoZWlnaHQ9IjQwLjczMzExOTU4NjU0MzUyIiBmaWxsPSIjZjU1NzZjIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI0MTguNzUiIHk9IjE5NC4yNjY4ODA0MTM0NTY0OCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzMzIj40NC44PC90ZXh0PiA8dGV4dCB4PSIxMTEuMjUiIHk9IjI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjY2Ij5Ub3RhbCBQcm9mPC90ZXh0Pjx0ZXh0IHg9IjIxMy43NSIgeT0iMjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NjYiPkF2ZXJhZ2UgV2k8L3RleHQ+PHRleHQgeD0iMzE2LjI1IiB5PSIyOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY2NiI+QXZlcmFnZSBMbzwvdGV4dD48dGV4dCB4PSI0MTguNzUiIHk9IjI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjY2Ij5Qcm9maXQgRmFjPC90ZXh0PiA8L3N2Zz4=" alt="Profit Metrics" class="chart-canvas" />
+                    
+                </div>
+            
+                <div class="chart-container">
+                    <h3>Profit Range Distribution</h3>
+                    <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNTAwIiBoZWlnaHQ9IjMwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj4gPHRleHQgeD0iMjUwIiB5PSIyNSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjE2IiBmb250LXdlaWdodD0iYm9sZCIgZmlsbD0iIzMzMyI+UHJvZml0IFJhbmdlIERpc3RyaWJ1dGlvbjwvdGV4dD4gPHJlY3QgeD0iNjAiIHk9IjUwIiB3aWR0aD0iNDEwIiBoZWlnaHQ9IjE5MCIgZmlsbD0iI2Y4ZjlmYSIgc3Ryb2tlPSIjZGVlMmU2Ii8+IDxsaW5lIHgxPSI2MCIgeTE9IjUwIiB4Mj0iNjAiIHkyPSIyNDAiIHN0cm9rZT0iIzY2NiIgc3Ryb2tlLXdpZHRoPSIxIi8+IDxsaW5lIHgxPSI2MCIgeTE9IjI0MCIgeDI9IjQ3MCIgeTI9IjI0MCIgc3Ryb2tlPSIjNjY2IiBzdHJva2Utd2lkdGg9IjEiLz4gPHJlY3QgeD0iNjYuODMzMzMzMzMzMzMzMzMiIHk9IjI0MCIgd2lkdGg9IjU0LjY2NjY2NjY2NjY2NjY2NCIgaGVpZ2h0PSIwIiBmaWxsPSIjNjY3ZWVhIiBzdHJva2U9IndoaXRlIiBzdHJva2Utd2lkdGg9IjEiLz48dGV4dCB4PSI5NC4xNjY2NjY2NjY2NjY2NiIgeT0iMjM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzMzMiPjAuMDwvdGV4dD48cmVjdCB4PSIxMzUuMTY2NjY2NjY2NjY2NjYiIHk9IjUwIiB3aWR0aD0iNTQuNjY2NjY2NjY2NjY2NjY0IiBoZWlnaHQ9IjE5MCIgZmlsbD0iIzc2NGJhMiIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMTYyLjUiIHk9IjQ1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzMzMiPjEuMDwvdGV4dD48cmVjdCB4PSIyMDMuNSIgeT0iMjQwIiB3aWR0aD0iNTQuNjY2NjY2NjY2NjY2NjY0IiBoZWlnaHQ9IjAiIGZpbGw9IiNmMDkzZmIiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjIzMC44MzMzMzMzMzMzMzMzNCIgeT0iMjM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzMzMiPjAuMDwvdGV4dD48cmVjdCB4PSIyNzEuODMzMzMzMzMzMzMzMyIgeT0iMjQwIiB3aWR0aD0iNTQuNjY2NjY2NjY2NjY2NjY0IiBoZWlnaHQ9IjAiIGZpbGw9IiNmNTU3NmMiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjI5OS4xNjY2NjY2NjY2NjY2MyIgeT0iMjM1IiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTIiIGZpbGw9IiMzMzMiPjAuMDwvdGV4dD48cmVjdCB4PSIzNDAuMTY2NjY2NjY2NjY2NjMiIHk9IjUwIiB3aWR0aD0iNTQuNjY2NjY2NjY2NjY2NjY0IiBoZWlnaHQ9IjE5MCIgZmlsbD0iIzRmYWNmZSIgc3Ryb2tlPSJ3aGl0ZSIgc3Ryb2tlLXdpZHRoPSIxIi8+PHRleHQgeD0iMzY3LjQ5OTk5OTk5OTk5OTk0IiB5PSI0NSIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEyIiBmaWxsPSIjMzMzIj4xLjA8L3RleHQ+PHJlY3QgeD0iNDA4LjQ5OTk5OTk5OTk5OTk0IiB5PSI1MCIgd2lkdGg9IjU0LjY2NjY2NjY2NjY2NjY2NCIgaGVpZ2h0PSIxOTAiIGZpbGw9IiMwMGYyZmUiIHN0cm9rZT0id2hpdGUiIHN0cm9rZS13aWR0aD0iMSIvPjx0ZXh0IHg9IjQzNS44MzMzMzMzMzMzMzMyNiIgeT0iNDUiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMiIgZmlsbD0iIzMzMyI+MS4wPC90ZXh0PiA8dGV4dCB4PSI5NC4xNjY2NjY2NjY2NjY2NiIgeT0iMjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NjYiPkxhcmdlIExvc3M8L3RleHQ+PHRleHQgeD0iMTYyLjUiIHk9IjI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjY2Ij5NZWRpdW0gTG9zPC90ZXh0Pjx0ZXh0IHg9IjIzMC44MzMzMzMzMzMzMzMzNCIgeT0iMjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NjYiPlNtYWxsIExvc3M8L3RleHQ+PHRleHQgeD0iMjk5LjE2NjY2NjY2NjY2NjYzIiB5PSIyOTAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZvbnQtZmFtaWx5PSJBcmlhbCwgc2Fucy1zZXJpZiIgZm9udC1zaXplPSIxMCIgZmlsbD0iIzY2NiI+U21hbGwgUHJvZjwvdGV4dD48dGV4dCB4PSIzNjcuNDk5OTk5OTk5OTk5OTQiIHk9IjI5MCIgdGV4dC1hbmNob3I9Im1pZGRsZSIgZm9udC1mYW1pbHk9IkFyaWFsLCBzYW5zLXNlcmlmIiBmb250LXNpemU9IjEwIiBmaWxsPSIjNjY2Ij5NZWRpdW0gUHJvPC90ZXh0Pjx0ZXh0IHg9IjQzNS44MzMzMzMzMzMzMzMyNiIgeT0iMjkwIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIiBmb250LWZhbWlseT0iQXJpYWwsIHNhbnMtc2VyaWYiIGZvbnQtc2l6ZT0iMTAiIGZpbGw9IiM2NjYiPkxhcmdlIFByb2Y8L3RleHQ+IDwvc3ZnPg==" alt="Profit Range Distribution" class="chart-canvas" />
+                    
+                </div>
+            
+        </div>
+    
+            
+        <div class="section">
+            <div class="insights">
+                <h3>💡 Key Insights</h3>
+                <ul><li>High win rate indicates good trade selection</li><li>Strong profit factor shows good risk/reward management</li><li>Overall profitable trading performance</li></ul>
+            </div>
+        </div>
+    
+            
+            
+        </div>
+
+        <div class="footer">
+            <p>Generated by MyPet Analytics v1.0.9 | Data Points: 3</p>
+            <p>Time range controlled by upstream MyPet Stocks API node</p>
+        </div>
+    </div>
+</body>
+</html>
