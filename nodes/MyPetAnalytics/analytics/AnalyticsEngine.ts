@@ -1,6 +1,5 @@
 import { IDataObject } from 'n8n-workflow';
 import * as ss from 'simple-statistics';
-import * as _ from 'lodash';
 import { TradeData, AccountData, ProcessedData } from './DataProcessor';
 
 export class AnalyticsEngine {
